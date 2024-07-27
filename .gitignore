@@ -1,0 +1,27 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/eCommerce/.vs
+/eCommerce/eCommerce.ApiGateway/bin/Debug/net8.0
+/eCommerce/eCommerce.ApiGateway/obj
+/eCommerce/eCommerce.Auth/obj
+/eCommerce/eCommerce.Auth.API/bin/Debug/net8.0
+/eCommerce/eCommerce.Auth.API/obj
+/eCommerce/eCommerce.Auth.Application/bin/Debug/net8.0
+/eCommerce/eCommerce.Auth.Application/obj
+/eCommerce/eCommerce.Auth.Domain/bin/Debug/net8.0
+/eCommerce/eCommerce.Auth.Domain/obj
+/eCommerce/eCommerce.Auth.Infrastructure/bin/Debug/net8.0
+/eCommerce/eCommerce.Auth.Infrastructure/obj
+/eCommerce/eCommerce.Auth.Persistence/obj
+/eCommerce/eCommerce.Order.Api/bin/Debug/net8.0
+/eCommerce/eCommerce.Order.Api/obj
+/eCommerce/eCommerce.Order.Domain/obj
+/eCommerce/eCommerce.Payment.Domain/obj
+/eCommerce/eCommerce.Product.Api/bin/Debug/net8.0
+/eCommerce/eCommerce.Product.Api/obj
+/eCommerce/eCommerce.Product.Domain/obj
+/eCommerce/obj/Docker
+/.vs/eCommerceBackend/v17
+/.vs

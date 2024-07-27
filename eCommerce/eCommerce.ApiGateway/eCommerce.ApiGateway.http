@@ -1,0 +1,15 @@
+@baseUrl = https://localhost:7157
+@AccessToken = CfDJ8JXoXedCh1BBtR2onCN7MoS5fp9ftfQxPN7ZHFJsa6Ipa_XImdTtQ-VeqD8copAsDTKH9t9QYNa6wgg_clQcHtQIe1oWGTBr3VfeezUpj8FxTKf8OGst2eGd-fX270LCohMud3_EcOdCy3KuaupdL8B74rlG8IGQVhYLfrZhaohQCLEUiSQ9Dk25a1oyLnJpLbt5N8ok06eCVKFMNRt5XqcZb652lZNMdAG0Y-N4l1RpoUChBsuY7GMnvEWrkuKZjKFgnWljZZqWn_Oo4SpBvj4kE44mn2-XG9B8uyhc4Xt8-e9rVqL24PWWBHtIcTmPTw
+
+GET {{baseUrl}}/login
+Accept: application/json
+
+###
+
+
+GET {{baseUrl}}/api/products/
+# Authorization: Bearer @AccessToken
+
+###
+
+GET {{baseUrl}}/api/orders/
