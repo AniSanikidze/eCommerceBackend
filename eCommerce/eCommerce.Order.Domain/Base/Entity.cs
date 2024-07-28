@@ -1,7 +1,8 @@
-﻿namespace eCommerce.Product.Domain.Abstractions
+﻿namespace eCommerce.Order.Domain.Base
 {
     public abstract class Entity
     {
+        //ToDo: UnitOfWork?
         protected Entity()
         {
         }

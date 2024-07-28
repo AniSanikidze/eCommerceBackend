@@ -1,11 +1,10 @@
-﻿using eCommerce.Order.Domain.Abstractions;
+﻿using eCommerce.Order.Domain.Base;
 using eCommerce.Order.Domain.Carts;
 
 namespace eCommerce.Order.Domain.Orders
 {
     public sealed class Order : Entity
     {
-        public Guid Id { get; private set; }
         public Guid UserId { get; private set; }
         public DateTime OrderDate { get; private set; }
         public OrderStatus Status { get; private set; }
@@ -23,7 +22,7 @@ namespace eCommerce.Order.Domain.Orders
             Status = status;
         }
 
-        public static Order Create(Guid id, Guid userId, DateTime orderDate, OrderStatus status) : base(id)
+        public static Order Create(Guid id, Guid userId, DateTime orderDate, OrderStatus status)
         {
             //Todo: Create Order created domain event and then publish integration event
             return new Order(id, userId, orderDate, status);

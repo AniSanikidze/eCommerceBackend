@@ -25,3 +25,11 @@
 /eCommerce/obj/Docker
 /.vs/eCommerceBackend/v17
 /.vs
+/eCommerce/eCommerce.Order.Application/obj
+/eCommerce/eCommerce.Payment.Application/obj
+/eCommerce/eCommerce.Product.Application/obj
+/eCommerce/eCommerce.Product.Persistence/obj
+/eCommerce/eCommerce.Product.Application/bin/Debug/net8.0
+/eCommerce/eCommerce.Payment.Application/bin/Debug/net8.0
+/eCommerce/eCommerce.Payment.Domain/bin/Debug/net8.0
+/eCommerce/eCommerce.Product.Domain/bin/Debug/net8.0
