@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using eCommerce.Product.Application.Common.Behaviours;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -13,9 +14,9 @@ namespace eCommerce.Product.Application
             services.AddMediatR(configuration =>
             {
                 configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+                configuration.AddOpenBehavior(typeof(ValidationBehaviour<,>));
             });
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
             //services.RegisterMapsterApplicationConfiguration();
 
             return services;

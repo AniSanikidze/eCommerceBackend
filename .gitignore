@@ -19,7 +19,6 @@
 /eCommerce/eCommerce.Order.Api/obj
 /eCommerce/eCommerce.Order.Domain/obj
 /eCommerce/eCommerce.Payment.Domain/obj
-/eCommerce/eCommerce.Product.Api/bin/Debug/net8.0
 /eCommerce/eCommerce.Product.Api/obj
 /eCommerce/eCommerce.Product.Domain/obj
 /eCommerce/obj/Docker
@@ -33,3 +32,7 @@
 /eCommerce/eCommerce.Payment.Application/bin/Debug/net8.0
 /eCommerce/eCommerce.Payment.Domain/bin/Debug/net8.0
 /eCommerce/eCommerce.Product.Domain/bin/Debug/net8.0
+/eCommerce/eCommerce.Order.Application/bin/Debug/net8.0
+/eCommerce/eCommerce.Order.Domain/bin/Debug/net8.0
+/eCommerce/eCommerce.Product.Persistence/bin/Debug/net8.0
+/eCommerce/eCommerce.Product.Api/bin/Debug/net8.0

@@ -3,6 +3,10 @@ using eCommerce.Product.Persistence.Context;
 using eCommerce.Product.Persistence.Repositories.Base;
 using ProductEntity = eCommerce.Product.Domain.Aggregates.Products.Product;
 using eCommerce.Product.Domain.Aggregates.Products;
+using System.Threading;
+using Sieve.Services;
+using Sieve.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace eCommerce.Product.Persistence.Repositories
 {
@@ -16,7 +20,17 @@ namespace eCommerce.Product.Persistence.Repositories
         {
             //Todo: include Product Categories
             return await GetAsync(
-                predicate: x => x.Id == productId && x.DeleteDate == null);
+                predicate: x => x.Id == productId && x.DeleteDate == null,
+                include: x => x.Include(x => x.ProductCategories.Where(x => x.DeleteDate == null)));
+        }
+
+        public IQueryable<ProductEntity> GetProducts(SieveModel filterModel, ISieveProcessor sieveProcessor)
+        {
+            return GetAllQueryable(
+               predicate: x => x.DeleteDate == null,
+               orderBy: x => x.OrderByDescending(x => x.CreateDate),
+               sieveProcessor: sieveProcessor,
+               filterModel: filterModel);
         }
     }
 }

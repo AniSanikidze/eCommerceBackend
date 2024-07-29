@@ -22,7 +22,7 @@ namespace eCommerce.Product.Application.Products.Commands.UpdateProduct
                 .NotEmpty()
                 .WithMessage("პროდუქტის აღწერის შევსება სავალდებულოა");
 
-            RuleFor(x => x.ProductCategoryIds)
+            RuleFor(x => x.CategoryIds)
                 .NotEmpty()
                 .WithMessage("კატეგორიის არჩევა სავალდებულოა");
         }

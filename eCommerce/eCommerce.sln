@@ -18,6 +18,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerce.Product.Api", "eCommerce.Product.Api\eCommerce.Product.Api.csproj", "{6720A845-D875-4C8E-A6AC-76B45428AF14}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerce.Order.Api", "eCommerce.Order.Api\eCommerce.Order.Api.csproj", "{43D03F7F-B4EF-4348-B0B9-8A2E25B87550}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BF813D5E-D219-4D74-9023-E7411464E3F2} = {BF813D5E-D219-4D74-9023-E7411464E3F2}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "auth", "auth", "{843EEBC8-D6C0-426E-BD0A-69D3F75B706D}"
 EndProject
@@ -51,15 +54,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "payment", "payment", "{78E3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerce.Payment.Domain", "eCommerce.Payment.Domain\eCommerce.Payment.Domain.csproj", "{5DAC66ED-8059-4D6E-AD09-CC7E1E570F0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.Order.Application", "eCommerce.Order.Application\eCommerce.Order.Application.csproj", "{BF813D5E-D219-4D74-9023-E7411464E3F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerce.Order.Application", "eCommerce.Order.Application\eCommerce.Order.Application.csproj", "{BF813D5E-D219-4D74-9023-E7411464E3F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.Payment.Application", "eCommerce.Payment.Application\eCommerce.Payment.Application.csproj", "{38C93F66-F8F5-40B3-83A4-2E41AC3A0453}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerce.Payment.Application", "eCommerce.Payment.Application\eCommerce.Payment.Application.csproj", "{38C93F66-F8F5-40B3-83A4-2E41AC3A0453}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.Product.Application", "eCommerce.Product.Application\eCommerce.Product.Application.csproj", "{B0EE5A5A-C964-4AB0-B283-31C482D2AE61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerce.Product.Application", "eCommerce.Product.Application\eCommerce.Product.Application.csproj", "{B0EE5A5A-C964-4AB0-B283-31C482D2AE61}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{7D20BB0E-905C-4369-B920-1EEDF7ABFC1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.Product.Persistence", "eCommerce.Product.Persistence\eCommerce.Product.Persistence.csproj", "{607D7AB5-8CEA-4A00-A9F0-90338965F4BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerce.Product.Persistence", "eCommerce.Product.Persistence\eCommerce.Product.Persistence.csproj", "{607D7AB5-8CEA-4A00-A9F0-90338965F4BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

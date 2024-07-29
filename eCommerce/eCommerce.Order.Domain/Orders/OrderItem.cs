@@ -1,4 +1,4 @@
-﻿using eCommerce.Order.Domain.Abstractions;
+﻿using eCommerce.Order.Domain.Base;
 
 namespace eCommerce.Order.Domain.Carts
 {
@@ -9,7 +9,7 @@ namespace eCommerce.Order.Domain.Carts
         public int Quantity { get; private set; }
         public decimal UnitPrice { get; private set; }
 
-        public CartItem(Guid id, Guid productId, string productName, int quantity, decimal unitPrice) 
+        public OrderItem(Guid id, Guid productId, string productName, int quantity, decimal unitPrice) 
             : base(id)
         {
             ProductId = productId;

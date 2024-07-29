@@ -8,12 +8,12 @@ namespace eCommerce.Product.Application.Products.Commands.CreateProduct
 {
     internal sealed class CreateProductCommandHandler(
         IProductRepository productRepository,
-        IProductCategoryRepository productCategoryRepository,
+        ICategoryRepository CategoryRepository,
         IUnitOfWork unitOfWork) : ICommandHandler<CreateProductCommand, Guid>
     {
         public async Task<Guid> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
-            var productCategories = await productCategoryRepository.GetByIdsAsync(request.ProductCategoryIds);
+            var productCategories = await CategoryRepository.GetByIdsAsync(request.CategoryIds);
             var product = new ProductEntity(
                                     Guid.NewGuid(),
                                     request.Name,

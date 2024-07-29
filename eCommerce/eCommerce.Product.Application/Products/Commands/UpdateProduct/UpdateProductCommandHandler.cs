@@ -7,7 +7,7 @@ namespace eCommerce.Product.Application.Products.Commands.UpdateProduct
 {
     internal sealed class UpdateProductCommandHandler(
         IProductRepository productRepository,
-        IProductCategoryRepository productCategoryRepository,
+        ICategoryRepository CategoryRepository,
         IUnitOfWork unitOfWork) : ICommandHandler<UpdateProductCommand, Guid>
     {
         public async Task<Guid> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
@@ -16,7 +16,7 @@ namespace eCommerce.Product.Application.Products.Commands.UpdateProduct
             if (product == null)
                 throw new Exception("პროდუქტი ვერ მოიძებნა");
 
-            var categories = await productCategoryRepository.GetByIdsAsync(request.ProductCategoryIds);
+            var categories = await CategoryRepository.GetByIdsAsync(request.CategoryIds);
 
             product.UpdateDetails(request.Name, request.Description, request.Price, request.StockQuantity);
 

@@ -2,6 +2,9 @@
 using eCommerce.Product.Domain.Interfaces;
 using eCommerce.Product.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
+using Sieve.Models;
+using Sieve.Services;
 using System.Linq.Expressions;
 
 namespace eCommerce.Product.Persistence.Repositories.Base
@@ -31,25 +34,49 @@ namespace eCommerce.Product.Persistence.Repositories.Base
 
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Entry(entity).State = EntityState.Deleted;
         }
 
         public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>>? predicate)
         {
-            var quaryable = _context.Set<T>();
-            if(predicate != null) quaryable.Where(predicate);
+            var quaryable = _context.Set<T>().AsQueryable();
+            if(predicate != null) quaryable = quaryable.Where(predicate);
             return await quaryable.ToListAsync();
         }
 
-        public async Task<T> GetAsync(Expression<Func<T, bool>> predicate)
+        public IQueryable<T> GetAllQueryable(Expression<Func<T, bool>>? predicate,
+        Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,
+        Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
+        SieveModel? filterModel = null, ISieveProcessor? sieveProcessor = null,
+        CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            IQueryable<T> queryable = _context.Set<T>();
+            if (include != null) queryable = include(queryable);
+            if (filterModel != null && sieveProcessor != null) queryable = sieveProcessor.Apply(filterModel, queryable, applyPagination: false);
+            if (predicate != null) queryable = queryable.Where(predicate);
+            if (orderBy != null) queryable = orderBy(queryable);
 
+            return queryable;
         }
 
-        public Task<T> GetByIdAsync(TId id)
+        public async Task<T> GetAsync(Expression<Func<T, bool>>? predicate,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,
+            Func<T, object>? orderBy = null,
+            Func<T, object>? orderByDesc = null,
+            CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            IQueryable<T> queryable = _context.Set<T>();
+            if (include != null) queryable = include(queryable);
+            if (predicate != null) queryable = queryable.Where(predicate);
+            if (orderBy != null) return queryable.MinBy(orderBy);
+            if (orderByDesc != null) return queryable.MaxBy(orderByDesc);
+
+            return await queryable.FirstOrDefaultAsync(cancellationToken);
+        }
+
+        public async Task<T> GetByIdAsync(TId id, CancellationToken cancellationToken)
+        {
+            return await _context.Set<T>().FindAsync(id, cancellationToken);
         }
 
         public IQueryable<T> Query(params Expression<Func<T, object>>[] includes)
@@ -59,7 +86,7 @@ namespace eCommerce.Product.Persistence.Repositories.Base
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Update(entity);
         }
     }
 }

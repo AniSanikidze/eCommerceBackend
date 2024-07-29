@@ -1,4 +1,4 @@
-﻿using eCommerce.Order.Domain.Abstractions;
+﻿using eCommerce.Order.Domain.Base;
 
 namespace eCommerce.Order.Domain.Carts
 {

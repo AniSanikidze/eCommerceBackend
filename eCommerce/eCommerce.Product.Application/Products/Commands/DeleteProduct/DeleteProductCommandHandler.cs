@@ -10,7 +10,7 @@ namespace eCommerce.Product.Application.Products.Commands.DeleteProduct
     {
         public async Task Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
-            var product = await productRepository.GetByIdAsync(request.Id);
+            var product = await productRepository.GetByIdAsync(request.Id, cancellationToken);
             if (product == null || product.DeleteDate != null)
                 throw new Exception("პროდუქტი ვერ მოიძებნა");
 

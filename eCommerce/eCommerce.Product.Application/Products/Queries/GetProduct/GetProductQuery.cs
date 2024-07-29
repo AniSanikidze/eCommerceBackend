@@ -2,5 +2,5 @@
 
 namespace eCommerce.Product.Application.Products.Queries.GetProduct
 {
-    public record GetProductQuery(Guid Id) : IQuery<GetProductResponse>;
+    public record GetProductQuery(Guid Id) : IQuery<ProductResponse>;
 }

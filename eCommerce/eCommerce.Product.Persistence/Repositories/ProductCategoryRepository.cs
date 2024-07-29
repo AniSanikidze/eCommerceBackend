@@ -4,15 +4,15 @@ using eCommerce.Product.Persistence.Repositories.Base;
 
 namespace eCommerce.Product.Persistence.Repositories
 {
-    public class ProductCategoryRepository : Repository<ProductCategory, Guid>, IProductCategoryRepository
+    public class CategoryRepository : Repository<Category, Guid>, ICategoryRepository
     {
-        public ProductCategoryRepository(ProductDbContext context) : base(context)
+        public CategoryRepository(ProductDbContext context) : base(context)
         {
         }
 
-        public async Task<IEnumerable<ProductCategory>> GetByIdsAsync(List<Guid> ProductCategoryIds)
+        public async Task<IEnumerable<Category>> GetByIdsAsync(List<Guid> CategoryIds)
         {
-            return await GetAllAsync(predicate: x => ProductCategoryIds.Contains(x.Id) && x.DeleteDate == null);
+            return await GetAllAsync(predicate: x => CategoryIds.Contains(x.Id) && x.DeleteDate == null);
         }
     }
 }

@@ -3,13 +3,16 @@ using eCommerce.Product.Domain.Base;
 
 namespace eCommerce.Product.Domain.Aggregates.Products
 {
-    public sealed class Product : Entity<Guid>
+    public sealed class Product : BaseAuditableEntity<Guid>, IUpdateableEntity
     {
         public string Name { get; private set; }
         public string Description { get; private set; }
         public decimal Price { get; private set; }
         public int StockQuantity { get; private set; }
-        public List<ProductCategory> ProductCategories { get; private set; }
+        public List<Category> ProductCategories { get; private set; } = new List<Category>();
+        public DateTime UpdateDate { get; set; }
+        public Guid UpdatedBy { get; set; }
+
         //TODO: image
 
         private Product() { }
@@ -47,7 +50,7 @@ namespace eCommerce.Product.Domain.Aggregates.Products
             SetStockQuantity(stockQuantity);
         }
 
-        public void UpdateCategories(IEnumerable<ProductCategory> categories)
+        public void UpdateCategories(IEnumerable<Category> categories)
         {
             ProductCategories.Clear();
             foreach (var category in categories)
@@ -56,13 +59,13 @@ namespace eCommerce.Product.Domain.Aggregates.Products
             }
         }
 
-        public void AddCategory(ProductCategory category)
+        public void AddCategory(Category category)
         {
             if (!ProductCategories.Contains(category))
                 ProductCategories.Add(category);
         }
 
-        public void RemoveCategory(ProductCategory category)
+        public void RemoveCategory(Category category)
         {
             if (ProductCategories.Contains(category))
                 ProductCategories.Remove(category);
