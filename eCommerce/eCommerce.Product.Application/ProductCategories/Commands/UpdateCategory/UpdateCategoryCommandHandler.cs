@@ -1,5 +1,5 @@
-﻿using eCommerce.Product.Application.Abstractions;
-using eCommerce.Product.Application.Exceptions;
+﻿using eCommerce.Common.Exceptions;
+using eCommerce.Product.Application.Abstractions;
 using eCommerce.Product.Domain.Aggregates.ProductCategories;
 using eCommerce.Product.Domain.Interfaces;
 

@@ -1,8 +1,5 @@
-﻿using eCommerce.Product.Api.Controllers.Base;
-using eCommerce.Product.Application.Common.Paging;
-using eCommerce.Product.Application.ProductCategories.Commands.CreateCategory;
-using eCommerce.Product.Application.ProductCategories.Commands.UpdateCategory;
-using eCommerce.Product.Application.ProductCategories.Models;
+﻿using eCommerce.Common.Paging;
+using eCommerce.Product.Api.Controllers.Base;
 using eCommerce.Product.Application.Products.Commands.CreateProduct;
 using eCommerce.Product.Application.Products.Commands.DeleteProduct;
 using eCommerce.Product.Application.Products.Commands.UpdateProduct;

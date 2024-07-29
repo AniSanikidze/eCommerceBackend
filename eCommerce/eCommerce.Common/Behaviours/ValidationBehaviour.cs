@@ -1,8 +1,8 @@
-﻿using eCommerce.Product.Application.Abstractions;
+﻿using eCommerce.Order.Application.Abstractions;
 using FluentValidation;
 using MediatR;
 
-namespace eCommerce.Product.Application.Common.Behaviours
+namespace eCommerce.Common.Behaviours
 {
     internal class ValidationBehaviour<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators)
     : IPipelineBehavior<TRequest, TResponse>

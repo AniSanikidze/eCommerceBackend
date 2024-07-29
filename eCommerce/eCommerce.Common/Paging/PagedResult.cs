@@ -1,7 +1,7 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
 
-namespace eCommerce.Product.Application.Common.Paging
+namespace eCommerce.Common.Paging
 {
     public class PagedResult<TResult>
     {

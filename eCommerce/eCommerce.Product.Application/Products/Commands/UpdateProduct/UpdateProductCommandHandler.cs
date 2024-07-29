@@ -1,4 +1,5 @@
-﻿using eCommerce.Product.Application.Abstractions;
+﻿using eCommerce.Common.Exceptions;
+using eCommerce.Product.Application.Abstractions;
 using eCommerce.Product.Domain.Aggregates.ProductCategories;
 using eCommerce.Product.Domain.Aggregates.Products;
 using eCommerce.Product.Domain.Interfaces;
@@ -14,7 +15,7 @@ namespace eCommerce.Product.Application.Products.Commands.UpdateProduct
         {
             var product = await productRepository.GetByIdWithCategoriesAsync(request.Id);
             if (product == null)
-                throw new Exception("პროდუქტი ვერ მოიძებნა");
+                throw new NotFoundException("პროდუქტი ვერ მოიძებნა");
 
             var categories = await CategoryRepository.GetByIdsAsync(request.CategoryIds);
 

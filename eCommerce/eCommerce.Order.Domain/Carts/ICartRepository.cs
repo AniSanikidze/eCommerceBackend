@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace eCommerce.Order.Domain.Carts
+﻿namespace eCommerce.Order.Domain.Carts
 {
-    interface ICartRepository
+    public interface ICartRepository
     {
+        Task<Cart?> GetCartAsync(Guid customerrId, CancellationToken cancellationToken);
+        Task AddToCartAsync(Guid customerId, CartItem item, CancellationToken cancellationToken);
+        Task RemoveFromCartAsync(Guid customerId, Guid productId, CancellationToken cancellationToken);
     }
 }

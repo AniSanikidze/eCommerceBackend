@@ -36,3 +36,11 @@
 /eCommerce/eCommerce.Order.Domain/bin/Debug/net8.0
 /eCommerce/eCommerce.Product.Persistence/bin/Debug/net8.0
 /eCommerce/eCommerce.Product.Api/bin/Debug/net8.0
+/eCommerce/eCommerce.Payment.Infrastructure/obj
+/eCommerce/eCommerce.Product.Infrastructure/obj
+/eCommerce/eCommerce.Order.Infrastructure/obj
+/eCommerce/eCommerce.Order.Persistence/obj
+/eCommerce/eCommerce.Payment.Persistence/obj
+/eCommerce/eCommerce.Common/obj
+/eCommerce/eCommerce.Common/bin/Debug/net8.0
+/eCommerce/eCommerce.Order.Infrastructure/bin/Debug/net8.0

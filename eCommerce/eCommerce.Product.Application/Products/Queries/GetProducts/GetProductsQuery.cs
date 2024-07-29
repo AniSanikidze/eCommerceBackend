@@ -1,5 +1,5 @@
-﻿using eCommerce.Product.Application.Abstractions;
-using eCommerce.Product.Application.Common.Paging;
+﻿using eCommerce.Common.Paging;
+using eCommerce.Product.Application.Abstractions;
 using Sieve.Models;
 
 namespace eCommerce.Product.Application.Products.Queries.GetProducts

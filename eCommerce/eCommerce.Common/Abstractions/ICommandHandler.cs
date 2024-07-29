@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eCommerce.Product.Order.Abstractions
+namespace eCommerce.Order.Application.Abstractions
 {
     public interface ICommandHandler<TCommand> : IRequestHandler<TCommand>
         where TCommand : ICommand

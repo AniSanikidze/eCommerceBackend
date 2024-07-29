@@ -1,16 +1,16 @@
-﻿using eCommerce.Order.Domain.Base;
+﻿using eCommerce.Common.Exceptions;
+using FluentValidation.Results;
 
 namespace eCommerce.Order.Domain.Carts
 {
-    public class CartItem : Entity
+    public class CartItem
     {
         public Guid ProductId { get; private set; }
         public string ProductName { get; private set; }
         public int Quantity { get; private set; }
         public decimal UnitPrice { get; private set; }
 
-        public CartItem(Guid id, Guid productId, string productName, int quantity, decimal unitPrice) 
-            : base(id)
+        public CartItem(Guid productId, string productName, int quantity, decimal unitPrice)
         {
             ProductId = productId;
             ProductName = productName;
@@ -18,9 +18,15 @@ namespace eCommerce.Order.Domain.Carts
             UnitPrice = unitPrice;
         }
 
-        public void UpdateQuantity(int quantity)
+        public void IncrementQuantity() => Quantity++;
+        public void DecrementQuantity()
         {
-            Quantity = quantity;
+            if (Quantity - 1 <= 0)
+                throw new ValidationException(
+                    new List<ValidationFailure>{
+                        new (nameof(Quantity), "არავალიდური პროდუქტის რაოდენობა")}
+                    );
+            Quantity--;
         }
 
         public decimal GetTotalPrice()

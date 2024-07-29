@@ -1,28 +1,23 @@
-﻿using eCommerce.Order.Domain.Base;
-
-namespace eCommerce.Order.Domain.Carts
+﻿namespace eCommerce.Order.Domain.Carts
 {
-    public class Cart : Entity
+    public class Cart
     {
-        public Guid UserId { get; private set; }
+        public Guid CustomerId { get; private set; }
         public List<CartItem> Items { get; private set; } = new List<CartItem>();
 
-        public Cart(Guid id, Guid userId) : base(id)
+        public Cart(Guid customerId, List<CartItem> items)
         {
-            UserId = userId;
+            CustomerId = customerId;
+            Items = items;
         }
 
-        public void AddItem(Guid productId, string productName, int quantity, decimal unitPrice)
+        public void AddItem(CartItem cartItem)
         {
-            var existingItem = Items.FirstOrDefault(i => i.ProductId == productId);
+            var existingItem = Items.FirstOrDefault(i => i.ProductId == cartItem.ProductId);
             if (existingItem != null)
-            {
-                existingItem.UpdateQuantity(quantity);
-            }
+                existingItem.IncrementQuantity();
             else
-            {
-                Items.Add(new CartItem(Guid.NewGuid(),productId, productName, quantity, unitPrice));
-            }
+                Items.Add(cartItem);
         }
 
         public void RemoveItem(Guid productId)
@@ -30,7 +25,10 @@ namespace eCommerce.Order.Domain.Carts
             var item = Items.FirstOrDefault(i => i.ProductId == productId);
             if (item != null)
             {
-                Items.Remove(item);
+                if (item.Quantity > 1)
+                    item.DecrementQuantity();
+                else
+                    Items.Remove(item);
             }
         }
 

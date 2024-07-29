@@ -1,8 +1,12 @@
-using Microsoft.AspNetCore.Http.HttpResults;
+using eCommerce.Order.Application;
+using eCommerce.Order.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services
+    .AddApplicationServices()
+    .AddInfrastructureServices(builder.Configuration);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
