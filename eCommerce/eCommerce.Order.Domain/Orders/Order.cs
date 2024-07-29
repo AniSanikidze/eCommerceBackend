@@ -3,23 +3,25 @@ using eCommerce.Order.Domain.Carts;
 
 namespace eCommerce.Order.Domain.Orders
 {
-    public sealed class Order : Entity
+    public sealed class Order : BaseAuditableEntity<Guid>, IUpdateableEntity
     {
         public Guid UserId { get; private set; }
         public DateTime OrderDate { get; private set; }
         public OrderStatus Status { get; private set; }
-        public Guid CartId { get; private set; }
-        public Cart Cart { get; private set; }
+        public decimal TotalAmount { get; private set; } 
+        public DateTime UpdateDate { get; set; }
+        public Guid UpdatedBy { get; set; }
 
-        //Todo: Address Value Object
+        public List<OrderItem> OrderItems { get; private set; } = new List<OrderItem>();
 
         private Order() { }
 
-        public Order(Guid id, Guid userId, DateTime orderDate, OrderStatus status) : base(id)
+        private Order(Guid id, Guid userId, DateTime orderDate, OrderStatus status) : base(id)
         {
             UserId = userId;
             OrderDate = orderDate;
             Status = status;
+            SetTotalAmount();
         }
 
         public static Order Create(Guid id, Guid userId, DateTime orderDate, OrderStatus status)
@@ -33,10 +35,9 @@ namespace eCommerce.Order.Domain.Orders
             Status = status;
         }
 
-        public decimal GetTotalPrice()
+        public void SetTotalAmount()
         {
-            return Cart.Items.Sum(item => item.GetTotalPrice());
+            TotalAmount = OrderItems.Sum(item => item.GetTotalPrice());
         }
     }
-
 }

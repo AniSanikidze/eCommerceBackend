@@ -1,17 +1,13 @@
 ﻿namespace eCommerce.Order.Domain.Base
 {
-    public abstract class Entity
+    public abstract class Entity<TId>
     {
-        //ToDo: UnitOfWork?
         protected Entity()
         {
         }
-        protected Entity(Guid id) { 
+        protected Entity(TId id) { 
             Id = id;
         }
-        public Guid Id { get; init; }
-        public DateTime CreateDate { get; init; }
-        public DateTime UpdateDate { get; init; }
-        public DateTime DeleteDate { get; init; }
+        public TId Id { get; init; }
     }
 }

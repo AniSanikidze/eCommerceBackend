@@ -5,6 +5,10 @@
         public Guid CustomerId { get; private set; }
         public List<CartItem> Items { get; private set; } = new List<CartItem>();
 
+        private Cart()
+        {
+
+        }
         public Cart(Guid customerId, List<CartItem> items)
         {
             CustomerId = customerId;

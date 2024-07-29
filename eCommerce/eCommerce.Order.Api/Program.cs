@@ -1,11 +1,13 @@
 using eCommerce.Order.Application;
 using eCommerce.Order.Infrastructure;
+using eCommerce.Order.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services
     .AddApplicationServices()
+    .AddPersistenceServices(builder.Configuration)
     .AddInfrastructureServices(builder.Configuration);
 
 builder.Services.AddControllers();

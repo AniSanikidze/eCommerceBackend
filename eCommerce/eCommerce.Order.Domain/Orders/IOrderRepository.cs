@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using eCommerce.Order.Domain.Interfaces;
 
 namespace eCommerce.Order.Domain.Orders
 {
-    interface IOrderRepository
+    public interface IOrderRepository : IRepository<Order, Guid>
     {
     }
 }

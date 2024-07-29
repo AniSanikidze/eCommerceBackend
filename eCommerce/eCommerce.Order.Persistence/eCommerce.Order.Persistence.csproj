@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.7" />
+		<PackageReference Include="Sieve" Version="2.5.5" />
+	</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\eCommerce.Order.Domain\eCommerce.Order.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

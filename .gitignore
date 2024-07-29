@@ -44,3 +44,8 @@
 /eCommerce/eCommerce.Common/obj
 /eCommerce/eCommerce.Common/bin/Debug/net8.0
 /eCommerce/eCommerce.Order.Infrastructure/bin/Debug/net8.0
+/eCommerce/eCommerce.Order.Persistence/bin/Debug/net8.0
+/eCommerce/eCommerce.Payment.Infrastructure/bin/Debug/net8.0
+/eCommerce/eCommerce.Payment.Persistence/bin/Debug/net8.0
+/eCommerce/eCommerce.Payment.Persistence/bin/Debug/net8.0/eCommerce.Payment.Persistence.deps.json
+/eCommerce/eCommerce.Product.Infrastructure/bin/Debug/net8.0
