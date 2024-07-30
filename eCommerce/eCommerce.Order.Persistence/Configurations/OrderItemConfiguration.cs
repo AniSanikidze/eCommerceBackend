@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using eCommerce.Order.Domain.Carts;
+using eCommerce.Order.Domain.Orders;
 
 namespace eCommerce.Order.Persistence.Configurations
 {

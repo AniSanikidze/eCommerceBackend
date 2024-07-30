@@ -74,7 +74,7 @@ namespace eCommerce.Product.Persistence.Repositories.Base
             return await queryable.FirstOrDefaultAsync(cancellationToken);
         }
 
-        public async Task<T> GetByIdAsync(TId id, CancellationToken cancellationToken)
+        public async Task<T> GetByIdAsync(TId id, CancellationToken? cancellationToken = null)
         {
             return await _context.Set<T>().FindAsync(id, cancellationToken);
         }

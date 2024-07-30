@@ -49,3 +49,10 @@
 /eCommerce/eCommerce.Payment.Persistence/bin/Debug/net8.0
 /eCommerce/eCommerce.Payment.Persistence/bin/Debug/net8.0/eCommerce.Payment.Persistence.deps.json
 /eCommerce/eCommerce.Product.Infrastructure/bin/Debug/net8.0
+/eCommerce/eCommerce.Common.Messaging/obj/Debug/net8.0
+/eCommerce/eCommerce.Common.Messaging/obj/Release/net8.0
+/eCommerce/eCommerce.Common/bin/Release/net8.0
+/eCommerce/eCommerce.Product.Api/bin/Release/net8.0
+/eCommerce/eCommerce.Product.Application/bin/Release/net8.0
+/eCommerce/eCommerce.Product.Domain/bin/Release/net8.0
+/eCommerce/eCommerce.Product.Persistence/bin/Release/net8.0

@@ -8,7 +8,7 @@ namespace eCommerce.Product.Domain.Interfaces
 {
     public interface IRepository<T, TId> where T : Entity<TId>
     {
-        Task<T> GetByIdAsync(TId id, CancellationToken cancellationToken);
+        Task<T> GetByIdAsync(TId id, CancellationToken? cancellationToken = null);
         Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> predicate);
         IQueryable<T> GetAllQueryable(Expression<Func<T, bool>>? predicate,
                 Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,

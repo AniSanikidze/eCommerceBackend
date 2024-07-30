@@ -1,15 +1,19 @@
-﻿using eCommerce.Common.Exceptions;
+﻿using eCommerce.Common.Events;
+using eCommerce.Common.Exceptions;
 using eCommerce.Order.Application.Abstractions;
 using eCommerce.Order.Domain.Carts;
 using eCommerce.Order.Domain.Interfaces;
 using eCommerce.Order.Domain.Orders;
+using Mapster;
+using MassTransit;
 
 namespace eCommerce.Order.Application.Orders.Command.CreateOrder
 {
     public class CreateOrderCommandHandler(
         IOrderRepository orderRepository,
         ICartRepository cartRepository,
-        IUnitOfWork unitOfWork) : ICommandHandler<CreateOrderCommand, Guid>
+        IUnitOfWork unitOfWork,
+        IPublishEndpoint publishEndpoint) : ICommandHandler<CreateOrderCommand, Guid>
     {
         public async Task<Guid> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {
@@ -26,7 +30,7 @@ namespace eCommerce.Order.Application.Orders.Command.CreateOrder
 
             foreach (var cartItem in cart.Items)
             {
-                order.OrderItems.Add(new OrderItem(
+                order.OrderItems.Add(new Domain.Orders.OrderItem(
                     cartItem.ProductId,
                     order.Id,
                     cartItem.ProductName,
@@ -38,11 +42,9 @@ namespace eCommerce.Order.Application.Orders.Command.CreateOrder
 
             await orderRepository.AddAsync(order);
             await unitOfWork.SaveChangesAsync(cancellationToken);
-            // Publish the OrderCreatedEvent
-            //var orderCreatedEvent = new OrderCreatedEvent(order.Id, order.UserId, order.OrderItems.Adapt<List<OrderItem>>());
-            //await _eventPublisher.PublishAsync(orderCreatedEvent);
 
-            //await _eventPublisher.PublishAsync(new OrderCreatedEvent(order.Id, order.CustomerId, order.OrderItems));
+            await publishEndpoint.Publish(order.Adapt<OrderCreated>());
+
             return order.Id;
         }
     }

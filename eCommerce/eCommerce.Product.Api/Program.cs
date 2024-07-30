@@ -1,5 +1,6 @@
 using eCommerce.Product.Api.Extensions;
 using eCommerce.Product.Application;
+using eCommerce.Product.Infrastructure;
 using eCommerce.Product.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services
     .AddApplicationServices()
+    .AddInfrastructureServices(builder.Configuration)
     .AddPersistenceServices(builder.Configuration);
 
 builder.Services.AddControllers();

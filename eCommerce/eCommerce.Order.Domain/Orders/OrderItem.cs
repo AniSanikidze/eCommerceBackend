@@ -1,4 +1,4 @@
-﻿namespace eCommerce.Order.Domain.Carts
+﻿namespace eCommerce.Order.Domain.Orders
 {
     public class OrderItem
     {
