@@ -1,10 +1,10 @@
-﻿using eCommerce.Order.Application.Abstractions;
+﻿using eCommerce.Common.Application.Abstractions;
 using FluentValidation;
 using MediatR;
 
 namespace eCommerce.Common.Behaviours
 {
-    internal class ValidationBehaviour<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators)
+    public class ValidationBehaviour<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators)
     : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IBaseCommand
     {

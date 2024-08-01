@@ -2,7 +2,9 @@
 using eCommerce.Product.Application.Services;
 using eCommerce.Product.Infrastructure.Options;
 using eCommerce.Product.Infrastructure.Services;
+using eCommerce.Product.Persistence.Interfaces;
 using MassTransit;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -19,7 +21,6 @@ namespace eCommerce.Product.Infrastructure
             {
                 busConfiguration.SetKebabCaseEndpointNameFormatter();
                 busConfiguration.AddConsumer<OrderCreatedConsumer>();
-                //var asb = typeof(OrderCreatedEventHandler).Assembly;
 
                 busConfiguration.UsingRabbitMq((context, configurator) =>
                 {
@@ -30,13 +31,11 @@ namespace eCommerce.Product.Infrastructure
                         h.Password("guest");
                     });
                     configurator.ConfigureEndpoints(context);
-                    //configurator.ReceiveEndpoint("order-created-queue", e =>
-                    //{
-                    //    e.Consumer<AConsumer>(context);
-                    //});
                 });
             });
-
+            services.AddScoped<IAuditService , AuditService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IUserResolverService , UserResolverService>();
             services.AddScoped<IProductService, ProductService>();
 
             return services;

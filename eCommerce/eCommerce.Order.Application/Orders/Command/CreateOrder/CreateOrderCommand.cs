@@ -1,4 +1,4 @@
-﻿using eCommerce.Order.Application.Abstractions;
+﻿using eCommerce.Common.Application.Abstractions;
 
 namespace eCommerce.Order.Application.Orders.Command.CreateOrder
 {

@@ -1,4 +1,5 @@
 using eCommerce.Product.Api.Extensions;
+using eCommerce.Product.Api.Middlewares;
 using eCommerce.Product.Application;
 using eCommerce.Product.Infrastructure;
 using eCommerce.Product.Persistence;
@@ -27,15 +28,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseAuthorization();
 
 app.MapControllers();
-
-//app.MapGet("/products", () =>
-//{
-//    return "Products";
-//});
 
 app.Run();

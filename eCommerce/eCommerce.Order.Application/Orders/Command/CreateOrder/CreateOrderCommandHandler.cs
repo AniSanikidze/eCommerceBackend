@@ -1,6 +1,6 @@
 ﻿using eCommerce.Common.Events;
 using eCommerce.Common.Exceptions;
-using eCommerce.Order.Application.Abstractions;
+using eCommerce.Common.Application.Abstractions;
 using eCommerce.Order.Domain.Carts;
 using eCommerce.Order.Domain.Interfaces;
 using eCommerce.Order.Domain.Orders;

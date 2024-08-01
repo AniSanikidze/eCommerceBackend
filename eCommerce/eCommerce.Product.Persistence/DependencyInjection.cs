@@ -1,9 +1,7 @@
 ﻿using eCommerce.Product.Domain.Aggregates.ProductCategories;
 using eCommerce.Product.Domain.Aggregates.Products;
 using eCommerce.Product.Domain.Interfaces;
-using eCommerce.Product.Infrastructure.Services;
 using eCommerce.Product.Persistence.Context;
-using eCommerce.Product.Persistence.Interfaces;
 using eCommerce.Product.Persistence.Repositories;
 using eCommerce.Product.Persistence.Sieve;
 using eCommerce.Product.Persistence.Sieve.Configurations;
@@ -29,7 +27,6 @@ namespace eCommerce.Product.Persistence
 
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<IAuditService, AuditService>();
 
             return services;
         }

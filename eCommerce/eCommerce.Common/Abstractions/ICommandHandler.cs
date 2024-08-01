@@ -1,11 +1,6 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace eCommerce.Order.Application.Abstractions
+namespace eCommerce.Common.Application.Abstractions
 {
     public interface ICommandHandler<TCommand> : IRequestHandler<TCommand>
         where TCommand : ICommand

@@ -32,7 +32,7 @@ namespace eCommerce.Product.Api.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns>Created category's Id</returns>
-        [HttpPost]
+        [HttpPost("admin")]
         public async Task<ActionResult<Guid>> CreateCategory(CategoryRequestModel request)
         {
             var result = await Mediator.Send(new CreateCategoryCommand(request));
@@ -47,8 +47,7 @@ namespace eCommerce.Product.Api.Controllers
         /// <response code="401">Unauthorized access</response>
         /// <response code="404">category not found</response>
         /// <response code="403">Non administrator user's request</response>
-        //[Authorize(Roles = $"{Roles.Administrator}")]
-        [HttpPut("{id:Guid}")]
+        [HttpPut("admin/{id:Guid}")]
         public async Task<ActionResult> UpdateCategory(CategoryRequestModel request, Guid id)
         {
             await Mediator.Send(new UpdateCategoryCommand(id, request));
@@ -63,8 +62,7 @@ namespace eCommerce.Product.Api.Controllers
         /// <response code="401">Unauthorized access</response>
         /// <response code="404">category not found</response>
         /// <response code="403">Non administrator user's request</response>
-        //[Authorize(Roles = $"{Roles.Administrator}")]
-        [HttpDelete("{id:Guid}")]
+        [HttpDelete("admin/{id:Guid}")]
         public async Task<ActionResult> DeleteCategory(Guid id)
         {
             await Mediator.Send(new DeleteCategoryCommand(id));

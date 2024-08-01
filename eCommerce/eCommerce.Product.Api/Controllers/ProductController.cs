@@ -1,4 +1,5 @@
-﻿using eCommerce.Common.Paging;
+﻿using eCommerce.Common;
+using eCommerce.Common.Paging;
 using eCommerce.Product.Api.Controllers.Base;
 using eCommerce.Product.Application.Products.Commands.CreateProduct;
 using eCommerce.Product.Application.Products.Commands.DeleteProduct;
@@ -7,6 +8,7 @@ using eCommerce.Product.Application.Products.Models;
 using eCommerce.Product.Application.Products.Queries.GetProduct;
 using eCommerce.Product.Application.Products.Queries.GetProducts;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sieve.Models;
 
@@ -38,6 +40,7 @@ namespace eCommerce.Product.Api.Controllers
         /// </remarks>
         /// <param name="filterModel"></param>
         /// <returns>Paginated list of products</returns>
+        //[Authorize]
         [HttpGet]
         public async Task<PagedResult<ProductsResponse>> GetProducts([FromQuery] SieveModel filterModel)
         {
@@ -59,8 +62,7 @@ namespace eCommerce.Product.Api.Controllers
         /// Create product
         /// </summary>
         /// <returns>Created product's Id</returns>
-        //[Authorize(Roles = $"{Roles.Administrator}")]
-        [HttpPost]
+        [HttpPost("admin")]
         public async Task<ActionResult<Guid>> CreateProduct(ProductRequestModel request)
         {
             var result = await Mediator.Send(new CreateProductCommand(request));
@@ -75,8 +77,8 @@ namespace eCommerce.Product.Api.Controllers
         /// <response code="401">Unauthorized access</response>
         /// <response code="404">product not found</response>
         /// <response code="403">Non administrator user's request</response>
-        //[Authorize(Roles = $"{Roles.Administrator}")]
-        [HttpPut("{id:Guid}")]
+        [Authorize(Roles = $"{Roles.Admin}")]
+        [HttpPut("admin/{id:Guid}")]
         public async Task<ActionResult> UpdateCategory(ProductRequestModel request, Guid id)
         {
             await Mediator.Send(new UpdateProductCommand(id, request));
@@ -91,8 +93,8 @@ namespace eCommerce.Product.Api.Controllers
         /// <response code="401">Unauthorized access</response>
         /// <response code="404">Case not found</response>
         /// <response code="403">Non administrator user's request</response>
-        //[Authorize(Roles = $"{Roles.Administrator}")]
-        [HttpDelete("{id:Guid}")]
+        [Authorize(Roles = $"{Roles.Admin}")]
+        [HttpDelete("admin/{id:Guid}")]
         public async Task<ActionResult> DeleteProduct(Guid id)
         {
             await Mediator.Send(new DeleteProductCommand(id));

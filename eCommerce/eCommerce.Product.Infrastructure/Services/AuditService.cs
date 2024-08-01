@@ -1,11 +1,12 @@
-﻿using eCommerce.Product.Domain.Base;
+﻿using eCommerce.Product.Application.Services;
+using eCommerce.Product.Domain.Base;
 using eCommerce.Product.Persistence.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace eCommerce.Product.Infrastructure.Services
 {
-    public class AuditService : IAuditService
+    public class AuditService(IUserResolverService userResolverService) : IAuditService
     {
         public void ApplyAuditInformation(IEnumerable<EntityEntry> entries)
         {
@@ -31,7 +32,7 @@ namespace eCommerce.Product.Infrastructure.Services
 
         private void SetAuditDetailsForAddedEntity(IBaseAuditableEntity entity)
         {
-            entity.CreatedBy = /*_userResolverService.UserId.Value*/ Guid.Empty;
+            entity.CreatedBy = userResolverService.UserId.Value;
             entity.CreateDate = DateTime.Now;
 
             if (entity is IUpdateableEntity updateableEntity)
@@ -42,7 +43,7 @@ namespace eCommerce.Product.Infrastructure.Services
 
         private void SetAuditDetailsForModifiedEntity(IUpdateableEntity entity)
         {
-            entity.UpdatedBy = /*_userResolverService.UserId.Value*/Guid.Empty;
+            entity.UpdatedBy = userResolverService.UserId.Value;
             entity.UpdateDate = DateTime.Now;
         }
 

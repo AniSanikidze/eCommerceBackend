@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\eCommerce.Auth.Domain\eCommerce.Auth.Domain.csproj" />
+    <ProjectReference Include="..\eCommerce.Common\eCommerce.Common.csproj" />
+  </ItemGroup>
+
 </Project>

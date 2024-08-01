@@ -7,12 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+	  <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\eCommerce.Product.Application\eCommerce.Product.Application.csproj" />
+    <ProjectReference Include="..\eCommerce.Product.Persistence\eCommerce.Product.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

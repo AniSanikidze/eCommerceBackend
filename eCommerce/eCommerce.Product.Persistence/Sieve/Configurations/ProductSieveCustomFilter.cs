@@ -1,14 +1,15 @@
 ﻿using ProductEntity = eCommerce.Product.Domain.Aggregates.Products.Product;
 using Sieve.Services;
+using eCommerce.Product.Application.Services;
 
 namespace eCommerce.Product.Persistence.Sieve.Configurations
 {
-    public class ProductSieveCustomFilter(/*IUserResolverService userResolverService*/) : ISieveCustomFilterMethods
+    public class ProductSieveCustomFilter(IUserResolverService userResolverService) : ISieveCustomFilterMethods
     {
         public IQueryable<ProductEntity> StockQuantity(IQueryable<ProductEntity> source, string op, string[] values)
         {
-            //if (!userResolverService.IsAdmin())
-            //    return source;
+            if (!userResolverService.IsAdmin())
+                return source;
 
             var quantity = Convert.ToInt32(values[0]);
 

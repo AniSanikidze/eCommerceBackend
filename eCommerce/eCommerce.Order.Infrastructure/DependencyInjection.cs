@@ -1,14 +1,11 @@
-﻿using eCommerce.Common.Events;
-using eCommerce.Order.Application.Orders.Events.InsufficientStock;
+﻿using eCommerce.Order.Application.Orders.Events.InsufficientStock;
 using eCommerce.Order.Domain.Carts;
-using eCommerce.Order.Domain.Outbox;
 using eCommerce.Order.Infrastructure.Options;
 using eCommerce.Order.Infrastructure.Outbox;
 using eCommerce.Order.Infrastructure.Services;
 using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace eCommerce.Order.Infrastructure

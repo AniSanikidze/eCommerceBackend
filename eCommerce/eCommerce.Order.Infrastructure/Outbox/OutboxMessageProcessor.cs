@@ -13,8 +13,6 @@ namespace eCommerce.Order.Infrastructure.Outbox
         private readonly IServiceProvider _serviceProvider;
         private readonly ILogger<OutboxMessageProcessor> _logger;
 
-        private static string Schedule => "*/10 * * * * *";
-
         public OutboxMessageProcessor(IServiceProvider serviceProvider,
             ILogger<OutboxMessageProcessor> logger)
         {
