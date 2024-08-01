@@ -9,7 +9,9 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.7" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Sieve" Version="2.5.5" />
+		<PackageReference Include="MassTransit.EntityFrameworkCore" Version="8.2.3" />
 	</ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eCommerce.Order.Domain\eCommerce.Order.Domain.csproj" />

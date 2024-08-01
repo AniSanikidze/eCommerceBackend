@@ -84,6 +84,11 @@ namespace eCommerce.Order.Persistence.Repositories.Base
             throw new NotImplementedException();
         }
 
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+
         public void Update(T entity)
         {
             _context.Set<T>().Update(entity);

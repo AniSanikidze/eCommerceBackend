@@ -1,6 +1,8 @@
-﻿namespace eCommerce.Common.Events
+﻿using eCommerce.Common.Events.Base;
+
+namespace eCommerce.Common.Events
 {
-    public class OrderCreated
+    public class OrderCreated : IntegrationEvent
     {
         public Guid Id { get; set; }
         public List<OrderItem> OrderItems { get; set; }

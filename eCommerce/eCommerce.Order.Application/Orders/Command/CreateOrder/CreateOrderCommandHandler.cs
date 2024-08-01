@@ -5,15 +5,13 @@ using eCommerce.Order.Domain.Carts;
 using eCommerce.Order.Domain.Interfaces;
 using eCommerce.Order.Domain.Orders;
 using Mapster;
-using MassTransit;
 
 namespace eCommerce.Order.Application.Orders.Command.CreateOrder
 {
     public class CreateOrderCommandHandler(
         IOrderRepository orderRepository,
         ICartRepository cartRepository,
-        IUnitOfWork unitOfWork,
-        IPublishEndpoint publishEndpoint) : ICommandHandler<CreateOrderCommand, Guid>
+        IUnitOfWork unitOfWork) : ICommandHandler<CreateOrderCommand, Guid>
     {
         public async Task<Guid> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {
@@ -40,10 +38,11 @@ namespace eCommerce.Order.Application.Orders.Command.CreateOrder
             }
             order.SetTotalAmount();
 
-            await orderRepository.AddAsync(order);
-            await unitOfWork.SaveChangesAsync(cancellationToken);
+            unitOfWork.AddPublishedEvent(order.Adapt<OrderCreated>());
 
-            await publishEndpoint.Publish(order.Adapt<OrderCreated>());
+            await orderRepository.AddAsync(order);
+
+            await unitOfWork.SaveChangesAsync(cancellationToken);
 
             return order.Id;
         }

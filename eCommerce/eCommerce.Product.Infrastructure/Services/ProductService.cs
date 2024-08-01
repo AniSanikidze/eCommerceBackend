@@ -30,9 +30,10 @@ namespace eCommerce.Product.Infrastructure.Services
 
         public async Task HandleInsufficientStockAsync(Guid orderId, Guid productId, IPublishEndpoint publishEndpoint)
         {
-            await publishEndpoint.Publish(new InsufficientStock() { 
+            await publishEndpoint.Publish(new StockValidationFailed() { 
                 OrderId = orderId,
-                ProductId = productId
+                ProductId = productId,
+                EventId = Guid.NewGuid()
             });
         }
     }
